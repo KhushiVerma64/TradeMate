@@ -13,7 +13,7 @@ const Holdings = () => {
   // Fetch holdings data from the backend
   const fetchHoldings = async () => {
     try {
-      const res = await axios.get("http://localhost:3002/allHoldings",{
+      const res = await axios.get("https://trademate-backend-oqw3.onrender.com",{
         headers: {
           "Content-Type": "application/json"
         },
@@ -30,7 +30,7 @@ const Holdings = () => {
   // Handle the delete action for a stock
   const handleDelete = async (stockId) => {
     try {
-      const response = await axios.delete(`http://localhost:3002/deleteHolding/${stockId}`,{
+      const response = await axios.delete(`https://trademate-backend-oqw3.onrender.com/deleteHolding/${stockId}`,{
         headers: {
           "Content-Type": "application/json"
         },

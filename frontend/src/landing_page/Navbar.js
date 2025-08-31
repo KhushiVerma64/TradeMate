@@ -8,7 +8,7 @@ function Navbar() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     useEffect(() => {
         axios
-            .get("http://localhost:3002/currentUser" , { withCredentials: true })
+            .get("https://trademate-backend-oqw3.onrender.com/currentUser" , { withCredentials: true })
             .then((res) => {
                 if (res.status === 200) {
                     setIsAuthenticated(true);
@@ -18,7 +18,7 @@ function Navbar() {
     }, []);
 
     const handleLogout = async () => {
-        await axios.post("http://localhost:3002/logout");
+        await axios.post("https://trademate-backend-oqw3.onrender.com/logout");
         setIsAuthenticated(false);
         localStorage.removeItem("user"); //  clear stale user
         window.location.href = "/login"; // or use navigate()

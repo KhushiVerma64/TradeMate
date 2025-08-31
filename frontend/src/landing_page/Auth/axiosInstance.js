@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3002",
+  baseURL : "https://trademate-backend-oqw3.onrender.com",  //backend  API url
   withCredentials: true, // Send cookies with requests
 });
 

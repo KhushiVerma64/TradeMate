@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/login",
+        "https://trademate-backend-oqw3.onrender.com/login",
         formData,
         {
           withCredentials: true,

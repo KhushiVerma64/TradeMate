@@ -21,7 +21,7 @@ const Signup = () => {
 
     try {
       // Send signup request to the backend
-      const response = await axios.post("http://localhost:3002/signup", formData, {
+      const response = await axios.post("https://trademate-backend-oqw3.onrender.com/signup", formData, {
         headers: {
           "Content-Type": "application/json"
         },
