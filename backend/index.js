@@ -22,15 +22,12 @@ const User = require("./schemas/user");
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 
-// const allowedOrigins = [
-//   "http://localhost:3000",
-//   "http://localhost:3001"
-// ];
-
 // Enable CORS for local development
 app.use(cors({
- origin: ["http://localhost:3000", "http://localhost:3001"], // allow both
-  // origin: allowedOrigins,
+ origin: [
+  "trademate-frontend-jade.vercel.app",   //frontend url
+  "trademate-dashboard.vercel.app",       //dashboard
+], 
   credentials: true
 }));
 
@@ -110,7 +107,7 @@ app.post("/signup", async (req, res) => {
 
       res.status(200).json({
         message: "Signup successful",
-        redirectUrl: "http://localhost:3001", // Local dashboard redirect
+        redirectUrl: "trademate-dashboard.vercel.app", //  dashboard redirect
         user: { name: registeredUser.name, email: registeredUser.email }
       });
     });
@@ -120,39 +117,12 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// app.post("/login", async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     const user = await User.findOne({ email });
-
-//     if (!user) return res.status(401).json({ message: "User not found" });
-
-//     user.authenticate(password, (err, authenticatedUser, passwordError) => {
-//       if (err || !authenticatedUser) {
-//         return res.status(401).json({ message: passwordError?.message || "Invalid credentials" });
-//       }
-
-//       req.login(authenticatedUser, err => {
-//         if (err) return res.status(500).json({ message: "Login failed" });
-
-//         res.status(200).json({
-//           message: "Login successful",
-//           redirectUrl: "http://localhost:3001", // Local dashboard
-//           user: { name: authenticatedUser.name, email: authenticatedUser.email }
-//         });
-//       });
-//     });
-//   } catch (err) {
-//     console.error("Login error:", err);
-//     res.status(500).json({ message: "Server error" });
-//   }
-// });
 
 //------Login------
 app.post("/login", passport.authenticate("local"), (req, res) => {
   res.status(200).json({
     message: "Login successful",
-    redirectUrl: "http://localhost:3000",
+    redirectUrl: "trademate-dashboard.vercel.app",
     user: { name: req.user.name, email: req.user.email }
   });
 });
