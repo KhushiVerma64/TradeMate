@@ -50,6 +50,8 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
+app.set("trust proxy", 1);
+
 // Simplified local session (no `secure`, `sameSite`)
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -61,9 +63,9 @@ app.use(session({
   }),
   cookie: {
     httpOnly: true,
-    secure: false,       //  local = false
-    sameSite: "lax",     //  works on localhost
-    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    secure: true,       
+    sameSite: "none",     
+    maxAge: 7 * 24 * 60 * 60 * 1000  // 7 days
   }
 }));
 
