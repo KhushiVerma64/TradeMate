@@ -67,7 +67,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link to="trademate-frontend-jade.vercel.app"  style={{ textDecoration: "none" }} onClick={() => handleMenuClick(6)}>
+            <Link to="https://trademate-frontend-jade.vercel.app"  style={{ textDecoration: "none" }} onClick={() => handleMenuClick(6)}>
               <p className={selectedMenu === 6 ? activeMenuClass : menuClass}>Back</p>
             </Link>
           </li>

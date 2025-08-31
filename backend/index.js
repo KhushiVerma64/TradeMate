@@ -25,8 +25,8 @@ const uri = process.env.MONGO_URL;
 // Enable CORS for local development
 app.use(cors({
  origin: [
-  "trademate-frontend-jade.vercel.app",   //frontend url
-  "trademate-dashboard.vercel.app",       //dashboard
+  "https://trademate-frontend-jade.vercel.app",   //frontend url
+  "https://trademate-dashboard.vercel.app",       //dashboard
 ], 
   credentials: true
 }));
@@ -107,7 +107,7 @@ app.post("/signup", async (req, res) => {
 
       res.status(200).json({
         message: "Signup successful",
-        redirectUrl: "trademate-dashboard.vercel.app", //  dashboard redirect
+        redirectUrl: "https://trademate-dashboard.vercel.app", //  dashboard redirect
         user: { name: registeredUser.name, email: registeredUser.email }
       });
     });
@@ -122,7 +122,7 @@ app.post("/signup", async (req, res) => {
 app.post("/login", passport.authenticate("local"), (req, res) => {
   res.status(200).json({
     message: "Login successful",
-    redirectUrl: "trademate-dashboard.vercel.app",
+    redirectUrl: "https://trademate-dashboard.vercel.app",
     user: { name: req.user.name, email: req.user.email }
   });
 });
